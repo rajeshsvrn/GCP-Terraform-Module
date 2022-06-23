@@ -1,0 +1,10 @@
+#Local terraform directory
+**/.terraform/*
+C:\\Users\\Anonymous\\Desktop\\GCP-Terraform-Module\\.terraform\\providers\\registry.terraform.io\\hashicorp\\azurerm\2.99.0\windows_386
+
+#State file
+
+*.tfstate
+*.tfstate.*
+
+#sensitive data
