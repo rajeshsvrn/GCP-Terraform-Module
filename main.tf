@@ -13,7 +13,8 @@ provider "google-beta" {
 
 
 module "vpc" {
-  source                                 = "C:\\Users\\Anonymous\\Desktop\\GCP-Terraform-Module\\modules\\vpc"
+  #source    = "C:\\Users\\Anonymous\\Desktop\\GCP-Terraform-Module\\modules\\vpc"
+  source = "github.com/rajeshsvrn/GCP-Terraform-Module.git/modules/vpc/"
   network_name                           = var.network_name
   auto_create_subnetworks                = var.auto_create_subnetworks
   routing_mode                           = var.routing_mode
@@ -24,7 +25,8 @@ module "vpc" {
 
 module "load_balancer"{
   
-  source                                 = "C:\\Users\\Anonymous\\Desktop\\GCP-Terraform-Module\\modules\\load_balancer"
+  #source = "C:\\Users\\Anonymous\\Desktop\\GCP-Terraform-Module\\modules\\load_balancer"
+  source = "github.com/rajeshsvrn/GCP-Terraform-Module.git/modules/load_balancer/"
   network_id = module.vpc.network_id
   subnet_id = module.vpc.subnet_id
   global_address = module.vpc.global_address
@@ -33,12 +35,14 @@ module "load_balancer"{
 
 module "storage_account" {
 
-    source                                 = "C:\\Users\\Anonymous\\Desktop\\GCP-Terraform-Module\\modules\\storage_account"
+    #source = "C:\\Users\\Anonymous\\Desktop\\GCP-Terraform-Module\\modules\\storage_account"
+    source = "github.com/rajeshsvrn/GCP-Terraform-Module.git/modules/storage_account/"
     bucket_name = var.bucket_name
 }
 
 module "cloud_function" {
-  source                                 = "C:\\Users\\Anonymous\\Desktop\\GCP-Terraform-Module\\modules\\cloud_function"
+  #source  = "C:\\Users\\Anonymous\\Desktop\\GCP-Terraform-Module\\modules\\cloud_function"
+  source = "github.com/rajeshsvrn/GCP-Terraform-Module.git/modules/cloud_function/"
   
   bucket_id = module.storage_account.bucket_id
   object_id = module.storage_account.object_id
